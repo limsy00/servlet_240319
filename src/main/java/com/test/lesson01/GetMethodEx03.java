@@ -16,6 +16,7 @@ public class GetMethodEx03 extends HttpServlet{
 		response.setContentType("text/json"); // ✅json
 		
 		// 테스트용 주석 추가
+		// stash 테스트용 주석 추가
 		
 		// request parameter
 		String userId = request.getParameter("user_id");
