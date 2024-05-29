@@ -36,8 +36,18 @@ public class GetMethodQuiz08 extends HttpServlet{
 		while (iter.hasNext()) {
 			String line = iter.next(); // 하나씩 탐색
 			//System.out.println(line);
-			if (line.contains(search)) {
-				out.print(line + "<br>");
+			
+			// if문 - 맛집 관련 문장만 출력
+			if (line.contains(search)) { 
+				/* 1) replace (새로운 문자열 반환,저장) 
+				 * ▶ "강남역 최고 <b>맛집</b> 소개 합니다." */
+				//line = line.replace(search, "<b>" + search + "</b>");
+				//out.print(line + "<br>");
+				
+				/* 2) split (하나의 단어만 있다는 가정하에 자르기) 
+				 * ▶ words[0] = 강남역 최고, words[1] = 소개 합니다. */
+				String[] words = line.split(search);
+				out.print(words[0] + "<b>" + search + "</b>" + words[1] + "<br>");
 			}
 		}
 		out.print("</body></html>");	
