@@ -67,15 +67,15 @@
          </header>
          <nav class="bg-danger d-flex align-items-center">
          	<ul class="nav nav-fill w-100"> 
-	             <li class="nav-item"><a href="#" class="nav-link">전체</a></li>
-	             <li class="nav-item"><a href="#" class="nav-link">지상파</a></li>
-	             <li class="nav-item"><a href="#" class="nav-link">드라마</a></li>
-	             <li class="nav-item"><a href="#" class="nav-link">예능</a></li>
-	             <li class="nav-item"><a href="#" class="nav-link">스포츠</a></li>
-	             <li class="nav-item"><a href="#" class="nav-link">부산</a></li>
+	             <li class="nav-item"><a href="/lesson02/quiz09.jsp" class="nav-link">전체</a></li>
+	             <li class="nav-item"><a href="/lesson02/quiz09.jsp?category=지상파" class="nav-link">지상파</a></li>
+	             <li class="nav-item"><a href="/lesson02/quiz09.jsp?category=드라마" class="nav-link">드라마</a></li>
+	             <li class="nav-item"><a href="/lesson02/quiz09.jsp?category=예능" class="nav-link">예능</a></li>
+	             <li class="nav-item"><a href="/lesson02/quiz09.jsp?category=영화" class="nav-link">영화</a></li>
+	             <li class="nav-item"><a href="/lesson02/quiz09.jsp?category=스포츠" class="nav-link">스포츠</a></li>
              </ul>
          </nav>
-         <section class="contents d-flex">
+         <section class="contents">
 			<table class="table text-center">
 				<thead>
 					<tr>
@@ -86,7 +86,11 @@
 				</thead>
 				<tbody>
 				<%
+					// request params
+					String category = request.getParameter("category");
 					for (Map<String, String> channel : list) {
+						// category null(전체) or category 일치 행
+						if (category == null || category.equals(channel.get("category"))) { 
 				%>
 					<tr>
 						<td><%= channel.get("ch") %></td>
@@ -94,6 +98,7 @@
 						<td><%= channel.get("category") %></td>
 					</tr>
 				<%
+						} // if
 					} // for
 				%>
 				</tbody>
